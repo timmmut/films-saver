@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="enter.css">
+    <title>Home</title>
+</head>
+<script>
+async function sendRegData(){
+    emailInp = document.getElementById("email");
+    surnInp = document.getElementById("surname");
+    nameInp = document.getElementById("name");
+    passInp = document.getElementById("password");
+    let dataObj = {
+        email: emailInp.value,
+        surname: surnInp.value,
+        name: nameInp.value,
+        password: passInp.value,
+        favFilm: ''
+    }
+
+    jsonObj = JSON.stringify(dataObj);
+
+    sendData = `${jsonObj}`;
+
+    let response = await fetch("/regData", { method: "POST", headers: {
+                'Content-Type': 'application/json'}, body: sendData});
+
+    const responseObj = await response.json();
+}
+</script>
+<body>
+        <div id="d1">
+            <h4>Sign up new account</h4>
+            <input id="email" placeholder="email">
+            <input id="surname" placeholder="surname">
+            <input id="name" placeholder="name">
+            <input id="password" type="password" placeholder="password">
+            <button type="button" onclick="sendRegData()"><a href="./films">Sign up</a></button>
+        </div>
+</body>
+
+        

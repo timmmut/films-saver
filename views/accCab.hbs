@@ -1,0 +1,63 @@
+<head>
+    <link rel="stylesheet" href="cabFilm.css">
+    <title>{{title}}</title>
+</head>
+<script>
+    async function sendFilmName(filmName){
+        let dataObj = {
+            filmName: filmName
+        }
+        jsonObj = JSON.stringify(dataObj);
+
+        sendData = `${jsonObj}`;
+
+        let response = await fetch("/deleteFav", { method: "POST", headers: {
+                    'Content-Type': 'application/json'}, body: sendData});
+
+        const responseObj = await response.json();
+    }
+    function button(filmName){
+        filmDiv = document.getElementById(filmName);
+        wrapper = document.getElementsByClassName("wrapper")[0];
+        wrapper.removeChild(filmDiv);
+    }
+
+</script>
+<button style="float: right"class="watchButton" id="closeCab"><a href="/films">Close your favourites</a></button>
+
+<div class="wrapper">
+    {{#each favFilmsArray}}                               
+        {{#with .}}
+        <div id="{{filmName}}" class="divFilm">                                 
+            <h3>{{filmName}}</h3>                 
+
+            {{#if img}}
+                <img src="{{img}}">
+            {{/if}}
+            
+            {{#if specs}}
+                <ul>
+                    {{~#each specs}}                  
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+
+            {{#if description}}
+                <p>{{description}}</p>
+            {{/if}}
+
+            {{#if link}}
+                <button class="watchButton"><a href="{{link}}">Watch {{type}}</a></button>
+            {{/if}}
+
+            <button class="watchButton" onclick="sendFilmName('{{filmName}}'), button('{{filmName}}')">Delete from favourites</button>
+
+            {{#unless specs}}
+                <h3>None</h3>
+            {{/unless}}
+            
+        {{/with}}
+        </div>
+    {{/each}}
+</div>

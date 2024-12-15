@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="enter.css">
+    <title>Home</title>
+</head>
+<script>
+    async function sendEnterData(){
+        emailInp = document.getElementById("email");
+        passInp = document.getElementById("password");
+        let dataObj = {
+            email: email.value,
+            password: passInp.value
+        }
+
+        jsonObj = JSON.stringify(dataObj);
+
+        sendData = `${jsonObj}`;
+
+        let response = await fetch("/entData", { method: "POST", headers: {
+                'Content-Type': 'application/json'}, body: sendData});
+
+        const responseObj = await response.json();
+    }
+</script>
+<body>
+    <div id="d1">
+        <h4>Sign in account</h4>
+        <input id="email" placeholder="email">
+        <input id="password" type="password" placeholder="password">
+        <button type="button" id = "buttonEnter" onclick="sendEnterData()"><a href="./films">Sign in</a></button>
+        <div id="falseDiv"></div>
+        <div id="buttonRegDiv"><button type="button" id = "buttonReg"><a href="./registration">Sign up new account</a></button></div>
+    </div>
+</body>
+
+        

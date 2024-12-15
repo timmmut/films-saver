@@ -1,0 +1,17 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+img{
+    height: 30vw;
+    border-radius: 3%;
+}
+
+a{
+  text-decoration: none;
+  color: #070707de;
+}

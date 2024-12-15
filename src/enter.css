@@ -1,0 +1,23 @@
+#d1{
+  border: solid;
+  height: 400px;
+  width: 220px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+#statDiv{
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
+input{
+  height: 20px;
+  width: 190px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#buttonRegDiv{
+  position: absolute;
+	bottom:0;
+}

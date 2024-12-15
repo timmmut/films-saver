@@ -1,0 +1,57 @@
+<head>
+    <link rel="stylesheet" href="films.css">
+    <title>{{title}}</title>
+</head>
+<script>
+    async function sendFilmName(filmName){
+        let dataObj = {
+            filmName: filmName
+        }
+        jsonObj = JSON.stringify(dataObj);
+
+        sendData = `${jsonObj}`;
+
+        let response = await fetch("/favFilm", { method: "POST", headers: {
+                    'Content-Type': 'application/json'}, body: sendData});
+
+        const responseObj = await response.json();
+    }
+</script>
+{{>header this}} 
+<h2 style="text-align:center">{{title}}</h2>
+<div width="1800px" class="wrapper">
+    {{~#each films}}                               
+        {{~#with .}}
+        <div class="divFilm">                                 
+            <h3>{{filmName}}</h3>                 
+
+            {{#if img}}
+                <img src="{{img}}" alt="deviceName">
+            {{/if}}
+            
+            {{~#if specs}}
+                <ul>
+                    {{~#each specs}}                  
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+
+            {{#if link}}
+                <button class="watchButton"><a href="{{link}}">Watch {{type}}</a></button>
+            {{/if}}
+
+            {{#if disabled}}
+                <button class="watchButton" disabled = "{{disabled}}" id="{{filmName}}" onclick="sendFilmName('{{filmName}}'), button('{{filmName}}')">Add to favourites</button>
+                {{else}}
+                <button class="watchButton" id="{{filmName}}" onclick="sendFilmName('{{filmName}}'), button('{{filmName}}')">Add to favourites</button>
+            {{/if}}
+            
+            {{#unless specs}}
+                <h3>None</h3>
+            {{/unless}}
+            
+        {{/with}}
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="recFilms.css">
+    <title>Top 50 films</title>
+</head>
+<h2 style="text-align:center">Top 50 recommended films</h2>
+<div width="1800px" class="wrapper">
+    {{#each recFilms}}                               
+        {{#with .}}
+        <div class="recFilmDiv">                                 
+            <h3>{{name}}</h3>                 
+
+            {{#if imgLink}}
+                <img src="{{imgLink}}">
+            {{/if}}
+            
+            {{#if pars1}}
+                <p>{{pars1}}</p>
+            {{/if}}
+
+            {{#if pars2}}
+                <p>{{pars2}}</p>
+            {{/if}}
+
+            {{#if link}}
+                <button class="watchButton"><a href="{{link}}">Watch</a></button>
+            {{/if}}
+            
+        {{/with}}
+        </div>
+    {{/each}}
+</div>

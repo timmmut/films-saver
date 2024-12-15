@@ -1,0 +1,31 @@
+.wrapper{
+    margin-left: 20px;
+}
+
+img{
+    width: 200px;
+    height: 300px;
+    border-radius: 3%;
+}
+
+a{
+  text-decoration: none;
+  color: #070707de;
+}
+.divFilm{
+  float: left;
+  height: 570px;
+  width: 200px;
+  margin-left: 20px;
+}
+.watchButton{
+  background: #f2f6f8;
+  border: 1px solid #7a7b7e;
+  width: 200px;
+  height: 40px;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+.watchButton:hover{
+  border: black;
+}
